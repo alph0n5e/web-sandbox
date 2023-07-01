@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Sandbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main>
+    <h1>CSS Sandbox</h1>
+    <section id="section-carousel-1">
+      <h2>3D CSS + JS Carousel</h2>
+      <p>Dynamic based on number of items</p>
+      <div class="carousel-wrapper">
+        <div class="carousel">
+          <div class="carousel-item item1">1</div>
+          <div class="carousel-item item2">2</div>
+          <div class="carousel-item item3">3</div>
+          <div class="carousel-item item4">4</div>
+          <div class="carousel-item item5">5</div>
+          <div class="carousel-item item6">6</div>
+          <div class="carousel-item item7">7</div>
+        </div>
+        <button class="carousel-previous">&#8249;</button>
+        <button class="carousel-next">&#8250;</button>
+      </div>
+    </section>
+
+    <section id="section-carousel-2">
+      <h2>3D CSS Auto Carousel</h2>
+      <p>Hard-coded angles and values, function of number of items (paused when hovered)</p>
+      <div class="carousel-wrapper">
+        <div class="carousel">
+          <div class="carousel-item item1">1</div>
+          <div class="carousel-item item2">2</div>
+          <div class="carousel-item item3">3</div>
+          <div class="carousel-item item4">4</div>
+          <div class="carousel-item item5">5</div>
+          <div class="carousel-item item6">6</div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="section-slideshow-1">
+      <h2>3D CSS Slideshow</h2>
+      <p>Infinite slideshow with zoom (paused when hovered)</p>
+      <div class="slideshow">
+        <div class="slideshow-track">
+          <div class="slideshow-item item6">6</div> <!-- Repeated for animation transitions -->
+          <div class="slideshow-item item1">1</div>
+          <div class="slideshow-item item2">2</div>
+          <div class="slideshow-item item3">3</div>
+          <div class="slideshow-item item4">4</div>
+          <div class="slideshow-item item5">5</div>
+          <div class="slideshow-item item6">6</div>
+          <div class="slideshow-item item1">1</div> <!-- Repeated for animation transitions -->
+          <div class="slideshow-item item2">2</div> <!-- Repeated for animation transitions -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
