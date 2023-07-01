@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.content {
+  max-width: 750px;
+  margin-inline: auto;
+}
+
+section {
+  padding-block: 5rem;
+}
