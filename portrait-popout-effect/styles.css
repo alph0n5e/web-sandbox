@@ -1,0 +1,88 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+:root {
+  --background-color: #3f3f3f;
+  --text-color: #f1f1f1;
+}
+
+body {
+  font-family: system-ui;
+  font-size: 1.25rem;
+  line-height: 1.6rem;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+main {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.portrait {
+  max-width: 200px;
+  --transform-transition: transform 250ms ease-in-out;
+}
+
+.portrait__container {
+  max-width: 200px;
+  aspect-ratio: 1/ 1.25;
+  border-radius: 0 0 100vh 100vh;
+  overflow-y: hidden;
+  display: grid;
+  align-items: end;
+  position: relative;
+  transform: scale(0.9);
+  transition: var(--transform-transition);
+}
+
+.portrait__background {
+  position: absolute;
+  background: #f1f1f1;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.portrait__img {
+  z-index: 2;
+  transition: var(--transform-transition);
+  transform: translateY(1rem);
+}
+
+.portrait:hover .portrait__container {
+  transform: scale(1);
+}
+
+.portrait:hover .portrait__img {
+  transform: translateY(0rem);
+}
+
+.portrait__legend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portrait__name {
+  padding-block: 1.125rem;
+  font-size: 1.2em;
+}
+
+.portrait__title {
+  --title-color: #aaa;
+  padding-block: .5rem;
+  border-top: solid 1px var(--title-color);
+  color: var(--title-color);
+  font-style: italic;
+}
