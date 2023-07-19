@@ -1,0 +1,65 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html {
+  font-family: system-ui;
+  font-size: 1.2rem;
+}
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100dvh;
+  display: grid;
+  grid-template:
+    "header" auto
+    "nav" auto
+    "main" 1fr
+    "aside" auto
+    "footer" auto;
+}
+header, nav, main, aside, footer {
+  --color: 244, 215, 0;
+  grid-area: header;
+  color: rgb(var(--color));
+  background-color: rgba(var(--color), 0.2);
+  border: 3px dashed rgb(var(--color));
+  display: grid;
+  place-items: center;
+  padding: 1.2em;
+}
+nav {
+  --color: 0, 0, 128;
+  grid-area: nav;
+}
+main {
+  --color: 0, 128, 0;
+  grid-area: main;
+}
+aside {
+  --color: 221, 60, 221;
+  grid-area: aside;
+}
+footer {
+  --color: 255, 99, 71;
+  grid-area: footer;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    grid-template:
+      "header header" auto
+      "nav main" 1fr
+      "footer aside" auto
+      / 2fr 5fr;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  body {
+    grid-template:
+      "header header header" auto
+      "nav main aside" 1fr
+      "footer main aside" auto
+      / 2fr 5fr 2fr;
+  }
+}
