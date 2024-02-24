@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.content {
+  width: min(80ch, 100% - 2rem);
+  margin-inline: auto;
+}
+
+blockquote {
+  background: #EEE;
+  margin-inline: 0;
+  margin-block: 2rem;
+  padding: 2rem 1rem;
+  border-radius: .5rem;
+}
+
+dl {
+  margin: 0;
+}
+
+dl.table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+dl.table > * {
+  text-align: center;
+}
+dl.table dt {
+  font-weight: 700;
+}
+dl.table dd {
+  margin: 0;
+}
