@@ -1,0 +1,68 @@
+.list-grid {
+  margin-block: 4rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 100px) 4rem [list-start] 1fr [list-end];
+  grid-template-rows: [list-start] auto repeat(3, 100px) auto [list-end];
+  gap: .5rem;
+}
+
+.list-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid-area: list;
+  align-self: center;
+}
+
+.list-grid li img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  transition: 500ms;
+  border-radius: .5rem;
+}
+
+.list-grid li:nth-child(3n + 1) img {
+  grid-column: 1/2;
+}
+.list-grid li:nth-child(3n + 2) img {
+  grid-column: 2/3;
+}
+.list-grid li:nth-child(3n + 3) img {
+  grid-column: 3/4;
+}
+
+.list-grid li:nth-child(-n + 3) img {
+  grid-row: 2/3;
+}
+.list-grid li:nth-child(n + 4):nth-child(-n + 6) img {
+  grid-row: 3/4;
+}
+.list-grid li:nth-child(n + 7) img {
+  grid-row: 4/5;
+}
+
+.list-grid a:is(:hover, :focus) {
+  background-color: #eee;
+}
+
+.list-grid a:is(:hover, :focus) img {
+  /* width: 150px; */
+  scale: 1.5;
+  aspect-ratio: 1;
+  z-index: 2;
+}
+
+.list-grid a:not(:hover, :focus) img {
+  animation: z-index-hack 500ms;
+}
+
+@keyframes z-index-hack {
+  0%, 100% {
+    z-index: 1;
+  }
+}
