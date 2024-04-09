@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Diamond & Hex Grid</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    section {
+      padding: 0;
+      margin-block-end: 6rem;
+    }
+    img {
+      max-width: 100%;
+    }
+    .diamond-grid {
+      width: fit-content;
+      margin-inline: auto;
+      --size: 100px;
+      --gap: .5rem;
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: repeat(6, var(--size));
+      grid-auto-rows: var(--size);
+      margin-block-end: var(--size);
+      place-items: start center;
+    }
+    .diamond-grid:hover img,
+    .hex-grid:hover img {
+      filter: brightness(0.5) contrast(0.5);
+    }
+    .diamond-grid img {
+      --duration: 500ms;
+      width: calc(2 * var(--size));
+      aspect-ratio: 1;
+      object-fit: cover;
+      grid-column: span 2;
+      clip-path: path('M 80 20 C 100 0 100 0 120 20 L 180 80 C 200 100 200 100 180 120 L 120 180 C 100 200 100 200 80 180 L 20 120 C 0 100 0 100 20 80 Z');
+      transition: 
+        clip-path var(--duration),
+        filter var(--duration);
+    }
+    .diamond-grid img:nth-of-type(5n -1) {
+      grid-column: 2 / span 2;
+    }
+    .diamond-grid img:hover {
+      filter: brightness(1) contrast(1);
+      z-index: 10;
+      clip-path: path('M 0 20 C 0 0 0 0 20 0 L 180 0 C 200 0 200 0 200 20 L 200 180 C 200 200 200 200 180 200 L 20 200 C 0 200 0 200 0 180 Z');
+    }
+    .diamond-grid img:not(:hover) {
+      animation: zIndexHack var(--duration);
+    }
+
+    .hex-grid {
+      width: fit-content;
+      margin-inline: auto;
+      --side: 100px;
+      --gap: 1rem;
+      /* If the "height" of a (vertically oriented) regular hexagon is 2x its side, its "width" (also called the apothem) is not, it is side * sqrt(3) / 2 */
+      --width: calc((2 * (sqrt(3) / 2) * var(--side) + var(--gap)) / 2);
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: repeat(6, var(--width));
+      grid-template-rows: repeat(3, calc(var(--side) / 2) var(--side)) calc(var(--side) / 2);
+      margin-block-end: var(--side);
+      place-items: start center;
+    }
+    .hex-grid img {
+      --duration: 500ms;
+      height: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      grid-column: span 2;
+      grid-row: span 3;
+      clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+      transition: 
+        clip-path var(--duration),
+        filter var(--duration);
+    }
+    .hex-grid img:hover {
+      filter: brightness(1) contrast(1);
+      z-index: 10;
+      clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 100% 100%, 100% 0%, 0% 0%);
+    }
+    .hex-grid img:not(:hover) {
+      animation: zIndexHack var(--duration);
+    }
+    .hex-grid img:nth-of-type(1) {
+      grid-column: 2 / span 2;
+      grid-row: 1 / span 3;
+    }
+    .hex-grid img:nth-of-type(2) {
+      grid-column: 4 / span 2;
+      grid-row: 1 / span 3;
+    }
+    .hex-grid img:nth-of-type(3) {
+      grid-column: 1 / span 2;
+      grid-row: 3 / span 3;
+    }
+    .hex-grid img:nth-of-type(4) {
+      grid-column: 3 / span 2;
+      grid-row: 3 / span 3;
+    }
+    .hex-grid img:nth-of-type(5) {
+      grid-column: 5 / span 2;
+      grid-row: 3 / span 3;
+    }
+    .hex-grid img:nth-of-type(6) {
+      grid-column: 2 / span 2;
+      grid-row: 5 / span 3;
+    }
+    .hex-grid img:nth-of-type(7) {
+      grid-column: 4 / span 2;
+      grid-row: 5 / span 3;
+    }
+
+    @keyframes zIndexHack {
+      0%, 100% {
+        z-index: 5;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="content">
+      <h1>CSS Diamond & Hex Grid</h1>
+      <section>
+        <h2>Diamond grid</h2>
+        <p>From Kevin Powell's <a href="https://www.youtube.com/watch?v=A5GXdjEOvos&ab_channel=KevinPowell">Create a diamond grid with CSS (with a bonus animation)</a> video.</p>
+        <div class="diamond-grid">
+          <img src="https://assets.codepen.io/1506195/unsplash-music-0.avif" alt="guitar player at concert" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-1.avif" alt="duo singing" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-2.avif" alt="crowd cheering" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-3.avif" alt="singer performing" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-4.avif" alt="singer fistbumping crowd" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-5.avif" alt="man with a guitar singing" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-6.avif" alt="crowd looking at a lighted stage" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-7.avif" alt="woman singing on stage" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Hex grid</h2>
+        <p>Slightly more complex due to the dimensions of a regular hexagon...</p>
+        <div class="hex-grid">
+          <img src="https://assets.codepen.io/1506195/unsplash-music-0.avif" alt="guitar player at concert" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-1.avif" alt="duo singing" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-2.avif" alt="crowd cheering" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-3.avif" alt="singer performing" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-4.avif" alt="singer fistbumping crowd" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-5.avif" alt="man with a guitar singing" />
+          <img src="https://assets.codepen.io/1506195/unsplash-music-6.avif" alt="crowd looking at a lighted stage" />
+        </div>
+      </section>
+
+    </article>
+  </main>
+  
+</body>
+</html>
