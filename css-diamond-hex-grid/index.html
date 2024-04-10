@@ -58,11 +58,12 @@
       --side: 100px;
       --gap: 1rem;
       /* If the "height" of a (vertically oriented) regular hexagon is 2x its side, its "width" (also called the apothem) is not, it is side * sqrt(3) / 2 */
-      --width: calc((2 * (sqrt(3) / 2) * var(--side) + var(--gap)) / 2);
+      --column-width: calc((2 * (sqrt(3) / 2) * var(--side) - var(--gap)) / 2); /* --column-width * 2 + --gap = 2 * --side * sqrt(3) / 2 */
+      --column-height: calc((2 * var(--side) - 2 * var(--gap)) / 4);
       display: grid;
       gap: var(--gap);
-      grid-template-columns: repeat(6, var(--width));
-      grid-template-rows: repeat(3, calc(var(--side) / 2) var(--side)) calc(var(--side) / 2);
+      grid-template-columns: repeat(6, var(--column-width));
+      grid-template-rows: repeat(3, var(--column-height) calc(2 * var(--column-height))) var(--column-height);
       margin-block-end: var(--side);
       place-items: start center;
     }
