@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS mix-blend-mode basics</title>
+  <style>
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    :root {
+      --dark: hsl(224, 45%, 20%);
+      --light: hsl(224, 25%, 92%);
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+    header {
+      display: flex;
+      justify-content: center;
+      background-color: var(--dark);
+      color: var(--light);
+    }
+    h2 {
+      font-size: 1.75rem;
+      margin-block: 1.5rem 1rem;
+      text-align: center;
+    }
+    section {
+      --padding: .5rem;
+      min-height: 100%;
+      display: grid;
+      padding: var(--padding);
+      gap: var(--padding);
+    }
+    section.basics {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr 1fr;
+    }
+    section.basics > h2 {
+      grid-column: 1 /-1;
+    }
+    section.basics > div  {
+      --dark-bg: hsl(224, 35%, 50%);
+      --light-bg: hsl(224, 65%, 70%);
+      display: grid;
+      place-items: center;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--dark-bg),
+        var(--dark-bg) 20px,
+        var(--light-bg) 20px,
+        var(--light-bg) 40px
+      );
+    }
+    section.basics p {
+      background: var(--dark);
+      padding: 3rem;
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--light);
+    }
+    .multiply {
+      mix-blend-mode: multiply;
+    }
+    .screen {
+      mix-blend-mode: screen;
+    }
+    .overlay {
+      mix-blend-mode: overlay;
+    }
+    .difference {
+      mix-blend-mode: difference;
+    }
+    section.example {
+      grid-template-rows: auto 1fr;
+    }
+    section.example article {
+      background-image: url("https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8");
+      background-size: cover;
+      display: flex;
+      flex-direction: row-reverse;
+      color: white;
+      isolation: isolate;
+    }
+    section.example article header {
+      background: none;
+      flex-direction: column;
+      justify-content: start;
+      padding-block-start: 4rem;
+      padding-inline: 2rem 1rem;
+      width: 40%;
+      position: relative;
+    }
+    section.example article header h3 {
+      font-size: 2rem;
+      color: var(--dark);
+      background-color: var(--light);
+      padding: .25em .5em;
+      border-radius: .5rem;
+      width: fit-content;
+    }
+    section.example article header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: hsl(270, 39%, 57%);
+      mix-blend-mode: multiply;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CSS mix-blend-mode basics</h1>
+  </header>
+  <main>
+    <section class="basics">
+      <h2>Basics</h2>
+      <div>
+        <p class="multiply">Multiply</p>
+      </div>
+      <div>
+        <p class="screen">Screen</p>
+      </div>
+      <div>
+        <p class="overlay">Overlay</p>
+      </div>
+      <div>
+        <p class="difference">Difference</p>
+      </div>
+    </section>
+    <section class="example">
+      <h2>Example</h2>
+      <article>
+        <header>
+          <h3>My super title</h3>
+          <p class="subtitle">Nulla ducimus molestiae voluptas omnis.</p>
+          <p class="summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore mollitia dolorem, rerum enim veniam sunt aperiam quidem temporibus ab facere fugiat eum in maiores sint dolores accusamus esse. Soluta ipsum modi enim quasi, incidunt laudantium voluptatum perspiciatis aspernatur voluptas iure?</p>
+        </header>
+        
+        
+      </article>
+    </section>
+  </main>
+  
+</body>
+</html>
