@@ -1,0 +1,68 @@
+:root {
+  --typewriter-speed: 4s;
+  --typewriter-delay: 1s;
+  --typewriter-characters: 20;
+  --background-color: hsl(34, 78%, 95%);
+}
+
+main {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2rem;
+}
+
+blockquote {
+  margin: 0;
+  padding: 2rem;
+  background-color: var(--background-color);
+  border-radius: .5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+blockquote p {
+  color: hsl(0, 0%, 44%);
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fade-in-up 2s calc(var(--typewriter-speed) + var(--typewriter-delay)) ease forwards;
+}
+
+.typewriter {
+  font-family: monospace;
+  position: relative;
+  width: max-content;
+}
+
+.typewriter::before,
+.typewriter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.typewriter::before {
+  background: var(--background-color);
+  animation: 
+    typewriter var(--typewriter-speed) var(--typewriter-delay) steps(var(--typewriter-characters)) forwards;
+}
+.typewriter::after {
+  width: 0.125em;
+  background: black;
+  animation: 
+    typewriter var(--typewriter-speed) var(--typewriter-delay) steps(var(--typewriter-characters)) forwards,
+    cursor-blink .75s steps(var(--typewriter-characters)) infinite;
+}
+
+@keyframes typewriter {
+  to { left: 100%; }
+}
+@keyframes cursor-blink {
+  to { background: transparent; }
+}
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
