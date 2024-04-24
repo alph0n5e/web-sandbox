@@ -21,6 +21,7 @@ blockquote {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: black;
 }
 blockquote p {
   color: hsl(0, 0%, 44%);

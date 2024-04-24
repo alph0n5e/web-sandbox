@@ -1,15 +1,10 @@
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
 .content {
   width: min(80ch, 100% - 2rem);
   margin-inline: auto;
 }
 
 blockquote {
-  background: #EEE;
+  background: #888;
   margin-inline: 0;
   margin-block: 2rem;
   padding: 2rem 1rem;

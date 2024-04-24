@@ -1,0 +1,51 @@
+:root {
+  color-scheme: light dark;
+  --content-width: 800px;
+  
+  --background-light: hsl(0, 4%, 95%);
+  --background-light-muted: hsl(0, 4%, 85%);
+  --background-dark: hsl(217, 13%, 20%);
+  --background-dark-muted: hsl(217, 13%, 30%);
+
+  --default-color-light: hsl(217, 13%, 20%);
+  --default-color-dark: hsl(0, 4%, 95%);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --global-background-color: var(--background-light);
+    --global-background-muted: var(--background-light-muted);
+    --global-default-color: var(--default-color-light);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --global-background-color: var(--background-dark);
+    --global-background-muted: var(--background-dark-muted);
+    --global-default-color: var(--default-color-dark);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--global-background-color);
+  color: var(--global-default-color);
+  margin: 0;
+  font-family: system-ui;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.content {
+  width: min(calc(100% - 2rem), var(--content-width));
+  margin-inline: auto;
+}

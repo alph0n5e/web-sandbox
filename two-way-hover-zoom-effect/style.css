@@ -47,7 +47,7 @@
 }
 
 .list-grid a:is(:hover, :focus) {
-  background-color: #eee;
+  background-color: grey;
 }
 
 .list-grid a:is(:hover, :focus) img {
