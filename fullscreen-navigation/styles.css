@@ -1,0 +1,105 @@
+:root {
+  --accent-color-1-light: lightgoldenrodyellow;
+  --accent-color-2-light: lightblue;
+  --accent-color-3-light: lightcoral;
+  --accent-color-4-light: lightseagreen;
+
+  --accent-color-1-dark: goldenrod;
+  --accent-color-2-dark: darkblue;
+  --accent-color-3-dark: coral;
+  --accent-color-4-dark: seagreen;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --accent-color-1: var(--accent-color-1-light);
+    --accent-color-2: var(--accent-color-2-light);
+    --accent-color-3: var(--accent-color-3-light);
+    --accent-color-4: var(--accent-color-4-light);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-color-1: var(--accent-color-1-dark);
+    --accent-color-2: var(--accent-color-2-dark);
+    --accent-color-3: var(--accent-color-3-dark);
+    --accent-color-4: var(--accent-color-4-dark);
+  }
+}
+
+header {
+  padding: 1rem 2rem;
+
+  button {
+    position: fixed;
+    padding: 0.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 10;
+  }
+}
+
+nav {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: stretch;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  /* background-color: lightcyan; */
+
+  a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex: 1 1 0;
+    align-items: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.75rem;
+    transform: translate3d(0, -100vh, 0);
+    transition: transform 0.5s, flex 0.3s ease-in-out;
+    transition-property: transform, flex;
+    pointer-events: auto;
+  }
+  a:hover,
+  a:focus-visible {
+    flex-grow: 1.5;
+  }
+
+  a:nth-child(1) {
+    background-color: var(--accent-color-1);
+  }
+  a:nth-child(2) {
+    background-color: var(--accent-color-2);
+    transition-delay: 400ms, 0s;
+  }
+  a:nth-child(3) {
+    background-color: var(--accent-color-3);
+    transition-delay: 200ms, 0s;
+  }
+  a:nth-child(4) {
+    background-color: var(--accent-color-4);
+    transition-delay: 300ms, 0s;
+  }
+}
+
+.nav-open nav a {
+  transform: translate3d(0, 0, 0);
+}
+
+@media screen and (aspect-ratio < 1.15) {
+  nav {
+    flex-direction: column;
+
+    a {
+      transform: translate3d(-100vw, 0, 0);
+    }
+  }
+}
