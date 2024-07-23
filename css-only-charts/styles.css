@@ -1,0 +1,80 @@
+.charts {
+  --c1: #6b6bd6;
+  --c2: #e74f4f;
+  --c3: #fc921f;
+  --c4: #149ece;
+
+  display: flex;
+  place-content: center;
+  flex-flow: wrap;
+  gap: 2rem;
+}
+
+.pie, .donut {
+  flex: 1 0 225px;
+  max-width: 325px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  background-image: 
+    conic-gradient(
+      var(--c1) 0% 40%,
+      var(--c2) 40% 65%,
+      var(--c3) 65% 80%,
+      var(--c4) 80% 100%
+    );
+}
+
+.donut {
+  background-image: 
+    radial-gradient(
+      var(--global-background-color) 0 40%,
+      transparent 40% 70%,
+      var(--global-background-color) 70% 100%
+    ),
+    conic-gradient(
+      var(--c1) 0% 40%,
+      var(--c2) 40% 65%,
+      var(--c3) 65% 80%,
+      var(--c4) 80% 100%
+    );
+}
+
+.legends {
+  margin-block-end: 2rem;
+  font-size: 0.875rem;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: wrap;
+  gap: 1rem;
+}
+
+.legends span {
+  position: relative;
+  padding-inline-start: 1.25rem;
+}
+
+.legends span::before {
+  position: absolute;
+  top: .25rem;
+  left: 0;
+  content: '';
+  width: 0.875rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.legends span:nth-child(1)::before {
+  background-color: var(--c1);
+}
+.legends span:nth-child(2)::before {
+  background-color: var(--c2);
+}
+.legends span:nth-child(3)::before {
+  background-color: var(--c3);
+}
+.legends span:nth-child(4)::before {
+  background-color: var(--c4);
+}
