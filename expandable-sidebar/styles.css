@@ -1,0 +1,128 @@
+body {
+  --sb-width: 5rem;
+}
+
+body.sb-expanded {
+  --sb-width: 16rem;
+}
+
+aside {
+  position: fixed;  
+  inset: 0 auto 0 0;
+  padding: 1rem;
+  width: var(--sb-width);
+  background-image:
+    linear-gradient(#ed6c30, #e09839, #edd923);
+  transition: width 0.3s ease-in-out;
+}
+
+nav {
+  display: flex;
+  flex-flow: column;
+  gap: 1.25rem;
+  height: 100%;
+}
+
+nav a,
+nav button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--global-background-color);
+  text-decoration: none;
+  border-radius: 0.375rem;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+
+nav a.active,
+nav a:hover,
+nav a:focus-visible,
+nav button:hover,
+nav button:focus-visible {
+  outline: none;
+  color: #e09839;
+  background-color: var(--global-background-color);
+}
+
+nav button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+nav a span,
+nav button span {
+  font-size: 0.875em;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
+}
+
+.sb-expanded nav a span,
+.sb-expanded nav button span {
+  opacity: 1;
+  visibility: visible;
+}
+
+nav button:last-child {
+  margin-top: auto;
+}
+
+.sb-expanded button i {
+  rotate: 180deg;
+}
+
+main {
+  margin-left: 5rem;
+  padding: 1rem 2rem;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+@media (width > 768px) {
+  main {
+    margin-left: var(--sb-width);
+  }
+}
+
+.placeholder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .75rem;
+  min-height: 600px;
+}
+
+.placeholder > div {
+  background-color: var(--global-background-muted);
+  border-radius: 0.375rem;
+  /* display: grid;
+  place-items: center;
+  font-size: 0.875rem;
+  color: var(--global-background-color); */
+}
+
+.placeholder > div:nth-child(1) {
+  grid-column: span 2;
+}
+
+.placeholder > div:nth-child(3) {
+  grid-row: span 2;
+}
+
+.placeholder > div:nth-child(6) {
+  grid-column: span 2;
+}
+
+.placeholder > div:nth-child(7) {
+  grid-column: span 2;
+}
+
+.placeholder > div:nth-child(9) {
+  grid-column: span 3;
+}
