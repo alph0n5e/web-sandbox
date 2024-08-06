@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../global.css">
+  <title>CSS 3D Hover effect Gallery</title>
+  <style>
+    img {
+      max-width: 100%;
+    }
+
+    .gallery {
+      display: flex;
+      margin-block: 2rem;
+      justify-content: center;
+      gap: .25rem;
+      transform-style: preserve-3d;
+      pointer-events: none;
+    }
+
+    .gallery-panel {
+      --aspect-ratio: 3 / 5;
+      flex: 1;
+      aspect-ratio: var(--aspect-ratio);
+      cursor: pointer;
+      transition: 0.3s;
+      pointer-events: auto;
+
+      -webkit-box-reflect: below 10px
+        linear-gradient(
+          transparent,
+          rgba(0, 0, 0, 0.15)
+        );
+
+      img {
+        display: block;
+        width: 100%;
+        aspect-ratio: var(--aspect-ratio);
+        object-fit: cover;
+        border-radius: 4px;
+      }
+    }
+
+    .gallery-panel:hover {
+      transform: scale(1.2);
+      box-sizing: 0 0 25px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery:hover > :not(:hover) {
+      margin-inline: -1.5rem;
+      transform:
+        perspective(400px)
+        rotateY(30deg)
+        scale(0.8);
+    }
+
+    .gallery-panel:hover ~ .gallery-panel {
+      transform:
+        perspective(400px)
+        rotateY(-30deg)
+        scale(0.8);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <hgroup class="content">
+      <h1>CSS 3D Hover effect Gallery</h1>
+      <p>From Optimistic Web's <a href="https://www.youtube.com/watch?v=03H1dW-kczM">video tutorial</a></p>
+    </hgroup>
+
+    <section class="content gallery">
+      <div class="gallery-panel"><img src="https://picsum.photos/300/500?random=1" alt=""></div>
+      <div class="gallery-panel"><img src="https://picsum.photos/300/500?random=2" alt=""></div>
+      <div class="gallery-panel"><img src="https://picsum.photos/300/500?random=3" alt=""></div>
+      <div class="gallery-panel"><img src="https://picsum.photos/300/500?random=4" alt=""></div>
+      <div class="gallery-panel"><img src="https://picsum.photos/300/500?random=5" alt=""></div>
+      <div class="gallery-panel"><img src="https://picsum.photos/300/500?random=6" alt=""></div>
+    </section>
+  </main>
+</body>
+</html>
