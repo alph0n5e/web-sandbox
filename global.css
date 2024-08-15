@@ -8,7 +8,9 @@
   --background-dark-muted: hsl(217, 13%, 30%);
 
   --default-color-light: hsl(217, 13%, 20%);
+  --default-color-light-muted: hsl(217, 12%, 45%);
   --default-color-dark: hsl(0, 4%, 95%);
+  --default-color-dark-muted: hsl(0, 4%, 65%);
 }
 
 @media (prefers-color-scheme: light) {
@@ -16,6 +18,7 @@
     --global-background-color: var(--background-light);
     --global-background-muted: var(--background-light-muted);
     --global-default-color: var(--default-color-light);
+    --global-default-muted: var(--default-color-light-muted);
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -23,6 +26,7 @@
     --global-background-color: var(--background-dark);
     --global-background-muted: var(--background-dark-muted);
     --global-default-color: var(--default-color-dark);
+    --global-default-muted: var(--default-color-dark-muted);
   }
 }
 

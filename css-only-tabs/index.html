@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Only Tabs</title>
+  <link rel="stylesheet" href="../global.css">
+  <style>
+    section {
+      padding: 1rem 2rem;
+      margin: 2rem auto;
+      border-radius: 1rem;
+      background-color: var(--global-background-muted);
+      box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.025);
+    }
+
+    .tabs {
+      --tab-count: 3;
+      --active: 0;
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      height: 3.5rem;
+      border-block-end: 1px solid var(--global-default-color);
+
+      & input {
+        display: none;
+      }
+      
+      & label {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--global-default-muted);
+        cursor: pointer;
+        transition: color .5s ease-in-out;
+      }
+
+      & input:checked + label {
+        color: var(--global-default-color);
+      }
+
+      &::after {
+        pointer-events: none;
+        position: absolute;
+        content: "";
+        z-index: -1;
+        inset: 0 0 -1px;
+        width: calc((100% / var(--tab-count)));
+        border-radius: .5rem .5rem 0 0;
+        border: 1px solid var(--global-default-color);
+        border-block-end: none;
+        background-image:
+          linear-gradient(
+            var(--global-background-color),
+            var(--global-background-muted) 
+          );
+        translate: calc(var(--active) * 100%);
+        transition: translate .5s ease-in-out;
+      }
+
+      &:has(:checked:nth-of-type(1)) {
+        --active: 0;
+      }
+      &:has(:checked:nth-of-type(2)) {
+        --active: 1;
+      }
+      &:has(:checked:nth-of-type(3)) {
+        --active: 2;
+      }
+    }
+
+    .tab-content {
+      padding: 1rem;
+    }
+
+    .tab-content-1,
+    .tab-content-2,
+    .tab-content-3 {
+      display: none;
+    }
+
+    :has(:checked:nth-of-type(1)) .tab-content-1,
+    :has(:checked:nth-of-type(2)) .tab-content-2,
+    :has(:checked:nth-of-type(3)) .tab-content-3 {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <main class="content">
+    <hgroup>
+      <h1>CSS Only Tabs</h1>
+      <p>From Optimistic Web's <a href="https://www.youtube.com/watch?v=4gkdSPEHf8Q">video tutorial</a></p>
+    </hgroup>
+
+    <section>
+      <div class="tabs">
+        <input type="radio" id="overview" name="tabs" checked />
+        <label for="overview">Overview</label>
+        
+        <input type="radio" id="experience" name="tabs" />
+        <label for="experience">Experience</label>
+        
+        <input type="radio" id="awards" name="tabs" />
+        <label for="awards">Awards</label>
+      </div>
+      
+      <div class="tab-content">
+        <div class="tab-content-1">
+          <h2>Overview</h2>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto ullam officia odio iure aperiam, dolorum enim harum similique quia dolores molestias, quos dolor delectus, veniam ea culpa reiciendis a id!</p>
+        </div>
+        
+        <div class="tab-content-2">
+          <h2>Experience</h2>
+          <p>Harum optio praesentium asperiores veritatis! Saepe eaque nesciunt iure quaerat animi impedit ipsam. Numquam, aperiam quidem nulla et nam consequatur inventore necessitatibus est beatae optio cumque repellendus alias expedita neque!</p>
+        </div>
+        
+        <div class="tab-content-3">
+          <h2>Awards</h2>
+          <p>Architecto laborum dignissimos illo culpa quae dolores! Sequi soluta rerum harum itaque ratione tempora necessitatibus non consequatur aliquid deleniti architecto esse, est recusandae? Nisi blanditiis aut maiores quasi aspernatur ullam?</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
