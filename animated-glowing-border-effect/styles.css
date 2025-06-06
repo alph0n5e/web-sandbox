@@ -1,0 +1,90 @@
+@property --glow-rotation {
+  syntax: "<angle>";
+  inherits: True;
+  initial-value: -90deg;
+}
+
+body {
+  /* --bg-color: #222; */
+  background-color: var(--bg-color);
+}
+
+header {
+  padding-inline: 2rem;
+}
+
+.glowing-border {
+  --gradient-glow: 
+    yellow, 
+    green, 
+    blue, 
+    purple, 
+    red,
+    orange, 
+    yellow;
+  --glow-intensity: 0.15;
+  --glow-size: .5rem;
+  --border-width: 2px;
+
+  margin-block: 3rem;
+  padding: 5rem 3rem;
+  max-width: 60ch;
+
+  border: var(--border-width, 4px) solid transparent;
+  border-radius: 0 100vw 100vw 0;
+  border-left: 0;
+  background: 
+    linear-gradient(var(--bg-color, canvas) 0 0) padding-box,
+    conic-gradient(from var(--glow-rotation), var(--gradient-glow)) border-box;
+  
+  position: relative;
+  isolation: isolate;
+
+  animation: glow 10s infinite;
+}
+
+@keyframes glow {
+  50% {
+    --glow-rotation: 90deg;
+  }
+  100% {
+    --glow-rotation: 270deg;
+  }
+}
+
+.glowing-border::before,
+.glowing-border::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+}
+
+.glowing-border::before {
+  z-index: -1;
+  inset: .25rem;
+  background: var(--bg-color, canvas);
+  /* left: 0; */
+  scale: 1.2 1;
+  transform-origin: right;
+  filter: blur(var(--glow-size, 1rem));
+}
+
+.glowing-border::after {
+  z-index: -2;
+  inset: -.25rem;
+  background: 
+    conic-gradient(from var(--glow-rotation), var(--gradient-glow)) border-box;
+  filter: blur(var(--glow-size, 1rem));
+  opacity: var(--glow-intensity, .2);
+}
+
+.glowing-border.right {
+  margin-inline-start: auto;
+  border-radius: 100vw 0 0 100vw;
+  border: var(--border-width, 4px) solid transparent;
+  border-right: 0;
+
+  &::before {
+    transform-origin: left;
+  }
+}
