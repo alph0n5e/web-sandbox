@@ -1,0 +1,137 @@
+:root {
+  --content-width: 700px;
+  --accent-color: #2da26f;
+  --secondary-color: #0f603d;
+  --bg-color: #dffcef;
+}
+
+@layer reset {
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    accent-color: var(--accent-color);
+    font-size: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6rem;
+    background: var(--bg-color);
+  }
+
+  h1 {
+    margin-block: 0 1rem;
+  }
+
+  input,
+  button,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer form {
+  .contact {
+    max-inline-size: min(var(--content-width), calc(100% - 2rem));
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+  }
+
+  .span-all {
+    grid-column: 1 / -1;
+  }
+
+  form {
+    display: grid;
+    gap: 1rem;
+
+    @media (width > 600px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+    display: grid;
+    gap: inherit;
+    grid-template-columns: inherit;
+  }
+
+  textarea {
+    resize: block;
+    box-sizing: content-box;
+    height: 3lh;
+  }
+
+  .form-group {
+    display: grid;
+  }
+
+  fieldset:has([required]) legend,
+  .form-group:has(:not([type="radio"])[required]) label {
+    display: flex;
+    gap: 1ch;
+    
+    &::after {
+      content: "*";
+      color: var(--accent-color);
+    }
+  }
+  
+  input,
+  textarea,
+  .form-group:has([type="radio"]) {
+    border: 1px solid var(--secondary-color);
+    border-radius: 6px;
+    padding: .75em 1em;
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-color);
+    }
+  }
+  
+  [type="radio"],
+  [type="checkbox"] {
+    width: 1rem;
+  }
+  
+  .form-group:has([type="radio"],[type="checkbox"]) {
+    display: flex;
+    gap: 1ch;
+    align-items: center;
+  }
+  
+  .form-group:has([type="radio"]:checked) {
+    background-color: var(--bg-color);
+    border: 2px solid var(--accent-color);
+  }
+  
+  .form-group:has([type="radio"]) {
+    position: relative;
+
+    label::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+  }
+  
+  button {
+    background: var(--accent-color);
+    color: white;
+    border: 0;
+    padding: .75em 1.5em;
+    border-radius: 6px;
+
+    &:hover, 
+    &:focus-visible {
+      background-color: var(--secondary-color);
+      cursor: pointer;
+    }
+  }
+}
+

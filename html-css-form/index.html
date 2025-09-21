@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML & CSS Form</title>
+  <!-- <link rel="stylesheet" href="../global.css"> -->
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <main class="contact">
+    <h1>Contact us</h1>
+
+    <form>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" required>
+      </div>
+      
+      <div class="form-group span-all">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <fieldset class="span-all">
+        <legend>Query type</legend>
+
+        <div class="form-group">
+          <input type="radio" id="query-general" name="query" value="general" required>
+          <label for="query-general">General Enquiry</label>
+        </div>
+
+        <div class="form-group">
+          <input type="radio" id="query-support" name="query" value="support" required>
+          <label for="query-support">Support Request</label>
+        </div>
+      </fieldset>
+
+      <div class="form-group span-all">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <div class="form-group span-all">
+        <input type="checkbox" name="consent" id="consent" required>
+        <label for="consent">I consent to being contacted by the staff</label>
+      </div>
+
+      <button class="span-all">Submit</button>
+    </form>
+  </main>
+  
+</body>
+</html>
